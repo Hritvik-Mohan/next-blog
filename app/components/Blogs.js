@@ -16,7 +16,7 @@ export default function Blogs() {
             date={blog.date}
             tags={blog.tags}
           />
-          <Link href={`/${blog.id}`}>Read More</Link>
+          <Link className="read-more" href={`/${blog.id}`}>Read More</Link>
         </div>
       ))}
     </div>

@@ -1,4 +1,6 @@
-* {
+
+
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,8 +11,10 @@
 
 .header {
     /* padding: 50px; */
+    display: flex;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    justify-content: space-around;
 }
 
 .blogs-container {
@@ -24,7 +28,7 @@
 
 .blog-component {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
 }
 
 .blog-component-contents {
@@ -36,9 +40,23 @@
 
 .blog-container-individual {
     /* border: 1px solid red; */
-    padding: 2rem 2rem;
+    padding: 1rem 1rem;
+    width: 100%;
+    max-width: 350px;
+
 }
 
-.blog-tags {
-    margin-top: 1.1rem;
+.form-container {
+    margin-inline: 2rem;
+}
+
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 10rem;
+}
+
+.email, .password, .auth-submission {
+    display: grid;
+    margin: 1rem 0;
 }
