@@ -11,7 +11,9 @@ export default function Blog({ key, title, content, author, date, tags }) {
       </div>
       <h2>{title}</h2>
       <p className="blog-component-contents">{content}</p>
-      <p className="blog-tags">Tags: {tags.join(", ")}</p>
+      <p className="blog-tags">{tags.map(tag => (
+        <div className="tag">{tag}</div>
+      ))}</p>
     </div>
   );
 }

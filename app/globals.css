@@ -4,8 +4,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  max-width: 1400px;
+  max-width: 1800px;
   margin: 0 auto;
+  padding: 1rem;
   /* border: 1px solid red; */
 }
 
@@ -59,4 +60,17 @@ body {
 .email, .password, .auth-submission {
     display: grid;
     margin: 1rem 0;
+}
+
+.blog-tags {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: rgb(241, 241, 241);
 }
