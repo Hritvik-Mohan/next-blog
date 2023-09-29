@@ -12,6 +12,7 @@ const BlogPost = () => {
 
   return (
     <div className="blog-post">
+      <div className="blog-img"><img src="https://picsum.photos/600/600" /></div>
       <h2 className="blog-post-heading">{post.title}</h2>
       <p>{post.content}</p>
       <p>Author: {post.author}</p>

@@ -5,6 +5,7 @@ export default function Blog({ key, title, content, author, date, tags }) {
   // console.log(key) 
   return (
     <div className="blog-component">
+      <div className="blog-img"><img src="https://picsum.photos/600/600" /></div>
       <h2>{title}</h2>
       <div className="author-date">
         <p>{author}</p>
