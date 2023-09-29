@@ -4,7 +4,7 @@ import Blogs from "./components/Blogs";
 
 export default function Home() {
   return (
-    <div className="blogs-container-2">
+    <div className="blogs-container">
       <Blogs/>
     </div>
   );

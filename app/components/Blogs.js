@@ -5,7 +5,8 @@ import Link from "next/link";
 
 export default function Blogs() {
   return (
-    <div className="blogs-container">
+    <div>
+      <h1 className="all-posts-heading">All posts</h1>
       {data.map((blog) => (
         <div key={blog.id} className="blog-container-individual">
           <Blog
