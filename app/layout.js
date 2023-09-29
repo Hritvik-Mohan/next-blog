@@ -1,5 +1,6 @@
 import Footer from './components/Footer'
 import Header from './components/Header'
+import Search from './components/Search'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -15,9 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-          <Header />
-          {children}
-          {/* <Footer/> */}
+            <div className='header-container'>
+              <Header />
+            </div>
+          <div class="blogs-container">
+            <div>{children}</div>
+            {/* <Footer/> */}
+          </div>
         </body>
     </html>
   )
