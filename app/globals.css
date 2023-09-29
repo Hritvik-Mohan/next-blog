@@ -48,6 +48,24 @@ body {
     padding: 2rem 1rem;
     justify-content: space-between;
     /* justify-content: end; */
+    align-items: baseline;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.logo-p1 {
+    font-weight: bold;
+    color: #EA1179;
+}
+
+.logo-p2 {
+    font-weight: 200;
+}
+
+.nav-options {
+    font-size: 1.1rem;
 }
 
 .header-container {
