@@ -11,9 +11,15 @@
 }
 
 :root {
-    --main-bg-color: white;
+    --main-bg-color: rgb(254, 254, 254);
+    /* --main-bg-color: rgb(255, 255, 255); */
     --text-color: black;
     --tag-bg-color: rgb(233, 233, 233);
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 body {
@@ -37,7 +43,7 @@ body {
 .header {
     /* padding: 50px; */
     display: flex;
-    max-width: 700px;
+    max-width: 732px;
     margin: 0rem auto;
     padding: 2rem 1rem;
     justify-content: space-between;
@@ -91,19 +97,16 @@ body {
     gap: 2rem;
 }
 
-.form-container {
-    margin-inline: 2rem;
-}
 
 .login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 10rem;
+    width: 100%;
 }
 
 .email, .password, .auth-submission {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     margin: 1rem 0;
+    width: 100%;
 }
 
 .blog-tags {
