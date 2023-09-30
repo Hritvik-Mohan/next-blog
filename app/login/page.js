@@ -1,20 +1,14 @@
-export default function Login () {
-    return (
-        <div className="form-container">
-            <form className="login-form">
-            <h2 className="">Login</h2>
-                <div className="email">
-                    <label>Email</label>
-                    <input type="text" />
-                </div>
-                <div className="password">
-                    <label>Password</label>
-                    <input type="password" />
-                </div>
-                <div className="auth-submission">
-                    <input type="submit" />
-                </div>
-            </form>
-        </div>
-    )
+export default function Login() {
+  return (
+    <form className="login">
+      <h2 className="">Login</h2>
+      <label>Username</label>
+      <input type="text" />
+      <label>Email</label>
+      <input type="text" />
+      <label>Password</label>
+      <input type="password" />
+      <input type="submit" className="submit" />
+    </form>
+  );
 }

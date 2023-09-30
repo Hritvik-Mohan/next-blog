@@ -28,15 +28,10 @@ body {
 }
 
 .blogs-container {
-  margin: 0;
   padding: 0 1rem;
-  box-sizing: border-box;
-  max-width: 1800px;
-  margin: 0 auto;
-  /* border: 1px solid red; */
-  display: grid;
+  /* max-width: 1800px; */
+  display: flex;
   flex-wrap: wrap;
-  /* max-width: 1400px; */
   justify-content: center;
 }
 
@@ -75,7 +70,9 @@ body {
 
 
 .all-posts-heading {
-    margin: 3rem 0 4rem 0;
+    margin: 2rem 0 4rem 0;
+    font-size: 2rem;
+    font-weight: 200;
 }
 
 .blog-post {
@@ -122,17 +119,19 @@ body {
     gap: 2rem;
 }
 
-
-.login-form {
+/* .form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
     width: 100%;
-}
+} */
 
-.email, .password, .auth-submission {
+/* .email, .password, .auth-submission {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
     width: 100%;
-}
+} */
 
 .blog-tags {
     display: flex;
@@ -152,18 +151,61 @@ body {
     justify-content: space-between;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 ::-webkit-scrollbar {
     display: none;
-  }
+}
+
+/* .add-blog {
+    width: 100%;
+    max-width: 700px;
+} */
+
+.login > label {
+    font-size: 1.2rem;overflow-x: ;
+}
+
+.add-blog > label {
+    font-size: 2rem;
+}
+
+.login > input, .add-blog > input, textarea{
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+}
+
+.login > h2{
+    font-size: 2rem;
+    font-weight: 200;
+    margin: 2rem 0;
+}
+
+.login > .submit{
+    padding: 0.6rem 0.6rem;
+    max-width: 200px;
+}
+
+.login {
+    max-width: 300px;
+}
+
+.login > * {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.add-blog {
+    max-width: 700px;
+    margin-top: 2rem;
+}
+
+.add-blog > .submit{
+    max-width: 200px;
+
+}
+
+.add-blog > * {
+    width: 100%;
+    margin: 1rem 0;
+}
