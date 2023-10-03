@@ -4,21 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Blog from "../components/Blog";
 
-export default function Login() {
+export default function UserContext() {
   const [userData, setUserData] = useState({});
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
-
-  const [blogs, setBlogs] = useState([]);
+  const [userState, diapatch] = user
 
   useEffect(() => {
-    get("blogs/")
-      .then((data) => {
-        setBlogs(data);
-      })
-      .catch((error) => {
-        console.log("Error fetching blogs:", error);
-      });
-
     // Fetch the authToken from local storage
     const authToken = localStorage.getItem("authToken");
 
@@ -55,47 +45,12 @@ export default function Login() {
     console.log(userData);
   }, []); // The empty dependency array ensures this effect runs only once
 
-  useEffect(() => {
-    // Filter blogs based on the user ID when userData is available
-    if (userData && blogs.length > 0) {
-      const filteredBlogs = blogs.filter((blog) => blog.user === userData._id);
-      setFilteredBlogs(filteredBlogs);
-      console.log(filteredBlogs);
-    }
-  }, [userData, blogs]);
-  // console.log(filteredBlogs);
-
   return (
     <div>
-      {userData ? (
         <div className="user-info">
           <p>{userData.username}</p>
           <p>({userData.email})</p>
         </div>
-      ) : (
-        <p>Loading user data...</p>
-      )}
-
-      <div>
-        {filteredBlogs <= 0 ? <h1 className="your-blogs">You don't have any blogs!</h1>: <h1 className="your-blogs">Your Blogs</h1>}
-        {
-          filteredBlogs.map((blog) => (
-            <div key={blog._id} className="blog-container-individual">
-            <Blog
-              id={blog._id}
-              title={blog.title}
-              content={blog.description}
-              author={blog.user}
-              date={blog.date}
-              tags={blog.tags}
-            />
-            <Link className="read-more" href={`/${blog._id}`}>
-              Read More
-            </Link>
-          </div>
-          ))
-        }
-      </div>
     </div>
   );
 }
