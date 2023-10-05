@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import blog from "../data/data.json";
 import { get } from "@/utils/api";
 import { AuthContextData } from "@/context/AuthContext";
+import parseDate from "@/utils/parseDate";
 
 const BlogPost = () => {
   const [blogs, setBlogs] = useState([]);
@@ -22,6 +23,7 @@ const BlogPost = () => {
 
   const post = blogs.find((item) => item._id == blogId);
 
+  // console.log(post.tag);
   if (!post) return <p>Blog post not found</p>;
 
   return (
@@ -30,10 +32,14 @@ const BlogPost = () => {
         <img src="https://picsum.photos/700/300" />
       </div>
       <h2 className="blog-post-heading">{post.title}</h2>
-      <p>{post.username}</p>
+      <div className="author-date">
+        <p>{post.username}</p>
+        <p>{parseDate(post.createdAt)}</p>
+      </div>
+      <p className="blog-tags">{post.tag && post.tag.map((tag, tagIdx) => (
+        <div key={tagIdx} className="tag">{tag}</div>
+      ))}</p>
       <p>{post.description}</p>
-      {/* <p>Date: {post.date}</p> */}
-      {/* <p>Tags: {post.tags.join(", ")}</p> */}
     </div>
   );
 };

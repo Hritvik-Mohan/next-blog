@@ -5,10 +5,12 @@ import Blog from "../components/Blog";
 import Link from "next/link";
 import { get } from "../../utils/api";
 import parseDate from "@/utils/parseDate";
+import { useData } from "@/context/AuthContext";
 
 export default function Blogs() {
-  const [blogs, setBlogs] = useState([]);
-  const [user, setUser] = useState({});
+  const { blogs } = useData();
+  // const [blogs, setBlogs] = useState([]);
+  // const [user, setUser] = useState({});
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -32,29 +34,31 @@ export default function Blogs() {
   return (
     <div>
       {/* <p>Hi Hritvik</p> */}
-      {/* <input
+      <input
         className="search"
         type="text"
-        placeholder="Search blogs"
+        placeholder="search"
         value={searchInput} // Bind the value to the search input state
         onChange={(e) => setSearchInput(e.target.value)} // Step 2: Update state on input change
-      /> */}
-      <h1 className="all-posts-heading">All posts</h1>
-      {filteredBlogs.reverse().map((blog) => (
-        <div key={blog._id} className="blog-container-individual">
-          <Blog
-            id={blog._id}
-            title={blog.title}
-            content={blog.description}
-            author={blog.username}
-            date={parseDate(blog.createdAt)}
-            tags={blog.tags}
-          />
-          <Link className="read-more" href={`/${blog._id}`}>
-            Read More 🔗
-          </Link>
+      />
+      {/* <h1 className="all-posts-heading">All posts</h1> */}
+      <div>
+        {filteredBlogs.reverse().map((blog) => (
+          <div key={blog._id} className="blog-container-individual">
+            <Blog
+              id={blog._id}
+              title={blog.title}
+              content={blog.description}
+              author={blog.username}
+              date={parseDate(blog.createdAt)}
+              tags={blog.tag}
+            />
+            <Link className="read-more" href={`/${blog._id}`}>
+              Read More 🔗
+            </Link>
         </div>
       ))}
+      </div>
     </div>
   );
 }

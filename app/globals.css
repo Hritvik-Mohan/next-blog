@@ -28,18 +28,22 @@ a:hover {
   /* text-shadow: 0 0 0.5px #6e3cbc; */
 }
 
-input:hover, input:focus {
+input:hover,
+input:focus {
   outline: none !important;
   border: 1px solid #6e3cbc !important;
   box-shadow: 0 0 1px #6e3cbc !important;
 }
-textarea:hover, textarea:focus {
+textarea:hover,
+textarea:focus {
   outline: none !important;
   border: 1px solid #6e3cbc !important;
   box-shadow: 0 0 1px #6e3cbc !important;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--main-bg-color);
   color: var(--text-color);
 }
@@ -50,6 +54,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  /* background-image: url("https://picsum.photos/700/300"); */
+  background-image: url("../public/blurimg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30vh;
+}
+
+.ct {
+  margin-top: 10rem;
 }
 
 .header {
@@ -107,6 +120,8 @@ body {
   height: 350px;
   object-fit: cover;
   border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.09);
+  margin-top: 4rem;
 }
 
 /* . {
@@ -124,7 +139,7 @@ body {
   /* max-width: 350px; */
 }
 
-.blog-component > div > *{
+.blog-component > div > * {
   display: grid;
   gap: 2rem;
 }
@@ -135,7 +150,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.blog-component-contents > * {
+.blog-component-contents {
   /* width: 400px; */
   /* max-width: 700px; */
   width: 100%;
@@ -158,6 +173,7 @@ body {
 }
 
 .blog-post-heading {
+  /* margin-top: 16rem; */
   font-weight: 300;
   font-size: 3rem;
 }
@@ -221,7 +237,7 @@ body {
   color: #464646;
 }
 
-input[type=submit] {
+input[type="submit"] {
   background-color: #6e3cbc;
   color: white;
 }
@@ -273,30 +289,48 @@ textarea {
   display: flex;
   /* flex-direction: column; */
   gap: 1rem;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
+  margin-top: 2rem;
   font-size: 2rem;
   font-weight: 300;
+  color: rgb(0, 0, 0);
+  background-color: #f7e3ff; 
+  padding: 1rem;
+  border-radius: 10px;
+  align-items: baseline;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.09);
+  font-weight: 200;
+  /* justify-content: center; */
 }
 
 .your-blogs {
   font-size: 1.5rem;
   font-weight: 300;
-  margin: 2rem 0;
+  margin: 2rem 0 0rem 0;
+  color: white;
+  font-weight: 400;
+  text-align: center;
 }
 
-
 .read-more {
-    color: #6e3cbc;
+  color: #6e3cbc;
 }
 
 .search {
-    margin: 2rem 0rem 1rem 0rem;
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    padding: 0.7rem 1.5rem;
-    border: 1px solid black;
+  margin: 4rem 0rem 2rem 0rem;
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #f7f7f7;
+  background-color: #f8e7ff; 
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-image: url("../public/search.png"); /* Replace 'search-icon.png' with the actual file path */
+  background-size: 20px; /* Adjust the size of the icon as needed */
+  background-repeat: no-repeat;
+  background-position: 15px center; /* Adjust the position of the icon as needed */
+  padding-left: 45px;
 }
 
 
@@ -305,4 +339,27 @@ textarea {
   height: 40px;
   font-size: 0.8rem;
   background-color: #3cbc9e;
+}
+
+.edit-del {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.edit-del > button {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 30px;
+  background-color: #dddddd;
+  color: white;
+}
+
+.edit-del > button:nth-child(1) {
+  background-color: #6e3cbc;
+}
+
+.edit-del > button:nth-child(2) {
+  background-color: rgb(195, 0, 0);
 }

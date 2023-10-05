@@ -8,15 +8,25 @@ export default function Login() {
   const [blog, setBlog] = useState({
     title: "",
     description: "",
-    tag: "",
+    tag: [],
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBlog({
-      ...blog,
-      [name]: value,
-    });
+    if (name === "tag") {
+      // Split the tags input into an array of tags
+      const tagsArray = value.split(",").map((tag) => tag.trim());
+      setBlog({
+        ...blog,
+        [name]: tagsArray,
+      });
+    } else {
+      setBlog({
+        ...blog,
+        [name]: value,
+      });
+    }
+
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,6 +63,8 @@ export default function Login() {
     } catch (error) {
       console.error("Error:", error);
     }
+
+    console.log(blog);
   };
 
   return (
@@ -71,7 +83,7 @@ export default function Login() {
       <input
         type="text"
         name="tag"
-        value={blog.tag}
+        value={blog.tag.join(",")}
         onChange={handleChange}
         placeholder="tags"
       />

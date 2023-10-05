@@ -12,9 +12,9 @@ export default function Blog({ key, title, content, author, date, tags }) {
         <p>{date}</p>
       </div>
       <p className="blog-component-contents">{content}</p>
-      {/* <p className="blog-tags">{tags.map((tag, tagIdx) => (
+      <p className="blog-tags">{tags && tags.map((tag, tagIdx) => (
         <div key={tagIdx} className="tag">{tag}</div>
-      ))}</p> */}
+      ))}</p>
     </div>
   );
 }

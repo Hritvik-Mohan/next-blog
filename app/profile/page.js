@@ -3,6 +3,7 @@ import { get } from "@/utils/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Blog from "../components/Blog";
+import parseDate from "@/utils/parseDate";
 
 export default function Login() {
   const [userData, setUserData] = useState({});
@@ -65,10 +66,22 @@ export default function Login() {
   }, [userData, blogs]);
   // console.log(filteredBlogs);
 
+  const handleDelete = () => {
+    const url = "http://127.0.0.1:8080/api/blogs/deleteBlog/`${}`";
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json", // Set the content type if needed
+      },
+    };
+  };
+
   return (
     <div>
       {userData ? (
         <div className="user-info">
+          <p>📝</p>
           <p>{userData.username}</p>
           <p>({userData.email})</p>
         </div>
@@ -77,24 +90,30 @@ export default function Login() {
       )}
 
       <div>
-        {filteredBlogs <= 0 ? <h1 className="your-blogs">You don't have any blogs!</h1>: <h1 className="your-blogs">Your Blogs</h1>}
-        {
-          filteredBlogs.map((blog) => (
-            <div key={blog._id} className="blog-container-individual">
+        {filteredBlogs <= 0 ? (
+          <h1 className="your-blogs">You don't have any blogs!</h1>
+        ) : (
+          <h1 className="your-blogs">Your Blogs</h1>
+        )}
+        {filteredBlogs.map((blog) => (
+          <div key={blog._id} className="blog-container-individual">
             <Blog
               id={blog._id}
               title={blog.title}
               content={blog.description}
-              author={blog.user}
-              date={blog.date}
-              tags={blog.tags}
+              author={blog.username}
+              date={parseDate(blog.createdAt)}
+              tags={blog.tag}
             />
             <Link className="read-more" href={`/${blog._id}`}>
               Read More
             </Link>
+            <div className="edit-del">
+              <button>Edit</button>
+              <button onClick={handleDelete}>Delete</button>
+            </div>
           </div>
-          ))
-        }
+        ))}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { AuthContextData } from "@/context/AuthContext";
+import { AuthContextData, useData } from "@/context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
@@ -9,6 +9,7 @@ import 'react-initials-avatar/lib/ReactInitialsAvatar.css';
 
 export default function Header() {
   const router = useRouter();
+  const { user } = useData();
   const { authState, dispatch } = useContext(AuthContextData);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
@@ -21,7 +22,6 @@ export default function Header() {
       // User is logged in, you can decode the token to get user info
       // For example, if the token contains user data in a JWT
       // const userData = decodeAuthToken(authToken);
-
       setIsLoggedIn(true);
       dispatch({ type: "LOGIN" , payload: authToken});
     }
@@ -48,19 +48,21 @@ export default function Header() {
           {authState.isAuthenticated ? (
             <>
               <div className="nav-options">
-                {isLoggedIn ? <Link href="/profile" className="profile-link"><InitialsAvatar name="Sherlock Holmes" /></Link> : null}
+              <Link href="/profile" className="profile-link">Profile</Link>
               </div>
               <div className="nav-options">
-                {isLoggedIn ? <Link href="/add">add</Link> : null}
+                <Link href="/add">Add</Link>
               </div>
               <div class="nav-options">
-                <Link href="/login" onClick={handleLogout}>logout</Link>
+                <Link href="/login" onClick={handleLogout}>Logout</Link>
               </div>
             </>
           ) : (
             <Link href="/login">login</Link>
-          )}
+            )}
       </div>
     </div>
   );
 }
+
+// {isLoggedIn ? <Link href="/profile" className="profile-link"><InitialsAvatar name="Sherlock Holmes" /></Link> : null}
