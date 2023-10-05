@@ -48,10 +48,10 @@ export default function Header() {
           {authState.isAuthenticated ? (
             <>
               <div className="nav-options">
-              <Link href="/profile" className="profile-link">Profile</Link>
+              <Link href="/profile" className="profile-link"></Link>
               </div>
               <div className="nav-options">
-                <Link href="/add">Add</Link>
+                <Link href="/add" class="add-link"></Link>
               </div>
               <div class="nav-options">
                 <Link href="/login" onClick={handleLogout}>Logout</Link>

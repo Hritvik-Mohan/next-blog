@@ -1,7 +1,8 @@
 "use client";
+import { useData } from "@/context/AuthContext";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Login() {
   const router = useRouter();
@@ -11,6 +12,21 @@ export default function Login() {
     tag: [],
     imageUrl: "",
   });
+  const [editBlogPost, setEditBlogPost] = useState({});
+
+  const params = useParams();
+  const { editId } = params;
+  console.log(editId);
+
+  const { blogs } = useData();
+  console.log(blogs);
+
+  useEffect(() => {
+    const post = blogs.find((item) => item._id == editId);
+    setBlog(post);
+    setEditBlogPost(post);
+    // console.log(post);
+  }, [editId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,9 +44,9 @@ export default function Login() {
       });
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const authToken = localStorage.getItem("authToken");
 
@@ -39,37 +55,49 @@ export default function Login() {
         // You can redirect to the login page or handle authentication as needed
         return;
       }
+      const originalPost = blogs.find((item) => item._id == editId);
+      // Create an object to store only the edited fields
+      const editedFields = {};
+      // Compare the edited values with the original values
+      for (const key in blog) {
+        if (blog[key] !== originalPost[key]) {
+          editedFields[key] = blog[key];
+        }
+      }
+      console.log(editedFields);
 
-      const response = await fetch("http://127.0.0.1:8080/api/blogs/addBlog", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`,
-        },
-        body: JSON.stringify(blog),
-      });
+      const response = await fetch(
+        `http://127.0.0.1:8080/api/blogs/updateBlog/${editId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: JSON.stringify(editedFields),
+        }
+      );
+
+      console.log(response);
 
       if (response.ok) {
         // Blog post created successfully, you can handle the response here
         const data = await response.json();
-        router.push("/");
-        console.log("Blog created:", data);
-
+        console.log("Blog updated:", data);
+        router.push(`/${editId}`);
         // Redirect to a success page or perform other actions
       } else {
         // Handle error cases here
-        console.error("Error creating blog post");
+        console.error("Error updating blog post");
       }
     } catch (error) {
       console.error("Error:", error);
     }
-
-    console.log(blog);
   };
 
   return (
     <form onSubmit={handleSubmit} className="add-blog">
-      <h2>Write a new blog...</h2>
+      <h2>Edit Blog...</h2>
       {/* <label>Title</label> */}
       <input
         type="text"
@@ -103,8 +131,8 @@ export default function Login() {
         required
         rows="15"
         cols="50"
-      />
-      <input type="submit" className="submit" value="Publish" />
+      ></textarea>
+      <input type="submit" className="submit" value="Save Changes" />
     </form>
   );
 }

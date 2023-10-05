@@ -66,15 +66,39 @@ export default function Login() {
   }, [userData, blogs]);
   // console.log(filteredBlogs);
 
-  const handleDelete = () => {
-    const url = "http://127.0.0.1:8080/api/blogs/deleteBlog/`${}`";
+  const handleDelete = (blogId) => {
+    // Fetch the authToken from local storage
+    const authToken = localStorage.getItem("authToken");
+
+    if (!authToken) {
+      console.error("Auth token not found in local storage");
+      return;
+    }
+
+    const url = `http://127.0.0.1:8080/api/blogs/deleteBlog/${blogId}`;
     const options = {
-      method: "POST",
+      method: "DELETE", // Use DELETE method to delete the blog
       headers: {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json", // Set the content type if needed
       },
     };
+
+    // Perform the delete request
+    fetch(url, options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        // If the delete request is successful, remove the deleted blog from the state
+        const updatedBlogs = filteredBlogs.filter(
+          (blog) => blog._id !== blogId
+        );
+        setFilteredBlogs(updatedBlogs);
+      })
+      .catch((error) => {
+        console.error("Delete error:", error);
+      });
   };
 
   return (
@@ -109,8 +133,12 @@ export default function Login() {
               Read More
             </Link>
             <div className="edit-del">
-              <button>Edit</button>
-              <button onClick={handleDelete}>Delete</button>
+              <button>
+                <Link className="read-more" href={`/edit/${blog._id}`}>
+                  Edit
+                </Link>
+              </button>
+              <button onClick={() => handleDelete(blog._id)}>Delete</button>
             </div>
           </div>
         ))}

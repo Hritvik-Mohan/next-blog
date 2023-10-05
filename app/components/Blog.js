@@ -1,11 +1,11 @@
 import React from "react";
 import Link from 'next/link'
 
-export default function Blog({ key, title, content, author, date, tags }) {
+export default function Blog({ key, title, content, author, date, tags, imageUrl }) {
   // console.log(key) 
   return (
     <div className="blog-component">
-      <div className="blog-img"><img src="https://picsum.photos/700/700" /></div>
+      <div className="blog-img"><img src={imageUrl ? imageUrl : "https://www.floatex.com/wp-content/uploads/2016/04/dummy-post-horisontal.jpg"} alt="blog image"/></div>
       <h2>{title}</h2>
       <div className="author-date">
         <p>{author}</p>

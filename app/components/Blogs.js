@@ -52,6 +52,7 @@ export default function Blogs() {
               author={blog.username}
               date={parseDate(blog.createdAt)}
               tags={blog.tag}
+              imageUrl={blog.imageUrl}
             />
             <Link className="read-more" href={`/${blog._id}`}>
               Read More 🔗

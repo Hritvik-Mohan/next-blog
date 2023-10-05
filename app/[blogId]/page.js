@@ -29,7 +29,7 @@ const BlogPost = () => {
   return (
     <div className="blog-post">
       <div className="blog-img">
-        <img src="https://picsum.photos/700/300" />
+        <img src={post.imageUrl ? `${post.imageUrl}`: "https://www.floatex.com/wp-content/uploads/2016/04/dummy-post-horisontal.jpg"} />
       </div>
       <h2 className="blog-post-heading">{post.title}</h2>
       <div className="author-date">
