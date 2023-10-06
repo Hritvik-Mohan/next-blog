@@ -357,7 +357,7 @@ textarea {
 }
 
 .search {
-  margin: 4rem 0rem 2rem 0rem;
+  margin: 2rem 0rem 2rem 0rem;
   width: 100%;
   padding: 0.6rem;
   border-radius: 25px;
@@ -412,4 +412,6 @@ textarea {
   border-radius: 50px;
   font-size: 1.2rem;
   background-color: var(--tag-bg-color);
+  justify-content: center;
+  text-align: center;
 }
