@@ -56,7 +56,7 @@ body {
   justify-content: center;
   /* background-image: url("https://picsum.photos/700/300"); */
   /* background-image: url("../public/blurimg.jpg"); */
-  background-color: #6e3cbc;
+  /* background-color: #6e3cbc; */
   background-size: cover;
   background-repeat: no-repeat;
   height: 30vh;
@@ -84,6 +84,7 @@ body {
 .logo-p1 {
   font-weight: bold;
   color: #6e3cbc;
+  /* color: #0a27c7; */
 }
 
 .logo-p2 {
@@ -105,13 +106,12 @@ body {
 
 .nav-options > .profile-link {
   background-image: url("../public/user.png"); /* Replace 'search-icon.png' with the actual file path */
-  background-size: 20px;/* Adjust the size of the icon as needed */
+  background-size: 20px; /* Adjust the size of the icon as needed */
   background-repeat: no-repeat;
   background-position: 15px center; /* Adjust the position of the icon as needed */
   padding-left: 45px;
   width: 100%;
 }
-
 
 .header-container {
   border-bottom: 1px solid #e1e5ea;
@@ -136,7 +136,7 @@ body {
 
 .blog-img {
   width: 100%;
-  max-width: 700px;
+  /* max-width: 700px; */
 }
 
 .blog-img > img {
@@ -146,7 +146,17 @@ body {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.09);
-  margin-top: 4rem;
+  margin-top: 0rem;
+}
+
+@media (min-width:700px) {
+  .blog-img > img {
+    min-width: 700px
+  }
+
+  .search {
+    min-width: 700px;
+  }
 }
 
 /* . {
@@ -170,15 +180,16 @@ body {
 }
 
 .blog-component > h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 
 .blog-component-contents {
   /* width: 400px; */
   /* max-width: 700px; */
-  width: 100%;
+  /* width: 100%; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
@@ -221,6 +232,10 @@ body {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.blog-content {
+  white-space: pre-line;
 }
 
 .tag {
@@ -319,20 +334,20 @@ textarea {
   font-size: 2rem;
   font-weight: 300;
   color: rgb(0, 0, 0);
-  background-color: #f7e3ff; 
+  /* background-color: #f7e3ff;  */
   padding: 1rem;
   border-radius: 10px;
   align-items: baseline;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.09);
+  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.09); */
   font-weight: 200;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
 .your-blogs {
   font-size: 1.5rem;
   font-weight: 300;
   margin: 2rem 0 0rem 0;
-  color: white;
+  /* color: white; */
   font-weight: 400;
   text-align: center;
 }
@@ -349,15 +364,14 @@ textarea {
   font-size: 1.2rem;
   padding: 0.7rem 1.5rem;
   border: 1px solid #f7f7f7;
-  background-color: #ffffff; 
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: #ffffff;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.01);
   background-image: url("../public/search.png"); /* Replace 'search-icon.png' with the actual file path */
   background-size: 20px; /* Adjust the size of the icon as needed */
   background-repeat: no-repeat;
   background-position: 15px center; /* Adjust the position of the icon as needed */
   padding-left: 45px;
 }
-
 
 .profile-link > * {
   width: 40px;
@@ -381,11 +395,21 @@ textarea {
   color: white;
 }
 
-.edit-del > button:nth-child(1), .edit-del > button > :nth-child(1) {
+.edit-del > button:nth-child(1),
+.edit-del > button > :nth-child(1) {
   color: white;
   background-color: #6e3cbc;
 }
 
 .edit-del > button:nth-child(2) {
   background-color: rgb(195, 0, 0);
+}
+
+.heading-tag {
+  margin: 2rem 0;
+  padding: 2rem 4rem;
+  background-color: #dddddd;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  background-color: var(--tag-bg-color);
 }
